@@ -2,6 +2,7 @@ class CashRegister
   attr_accessor :total
   attr_reader :discount
   @@items = []
+  @@totals = []
   def initialize(discount=nil)
     @total = 0
     @discount = discount
@@ -11,6 +12,7 @@ class CashRegister
     quantity.times do
       @@items << title
     end
+    @@totals << @total
   end
   def apply_discount
     if @discount == nil
@@ -23,5 +25,17 @@ class CashRegister
 
   def items
     @@items
+  end
+
+  def void_last_transaction
+    array = @@totals.pop
+    if array == []
+      @total = 0
+      @total
+    else
+      @total =array.last
+      @total
+    end
+
   end
 end
