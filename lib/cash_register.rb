@@ -28,12 +28,12 @@ class CashRegister
   end
 
   def void_last_transaction
-    array = @@totals.pop
-    if array == []
+     @@totals.pop
+    if @@totals == []
       @total = 0
       @total
     else
-      @total =array.last
+      @total = @@totals.last
       @total
     end
 
